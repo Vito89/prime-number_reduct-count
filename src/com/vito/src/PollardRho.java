@@ -11,19 +11,19 @@ public class PollardRho {
 
     public static List<Integer> primeFactors(int number) {
         final List<Integer> factors = new ArrayList<>();
-        number = SmallPrimes.divideToFactorsAndReturnUpdNumb(number, factors);
-        if (1 == number) {
+        var num = SmallPrimes.divideToFactorsAndReturnUpdNumb(number, factors);
+        if (1 == num) {
             return factors;
         }
 
-        if (SmallPrimes.passesMillerRabin(number)) {
-            factors.add(number);
+        if (SmallPrimes.passesMillerRabin(num)) {
+            factors.add(num);
             return factors;
         }
 
-        int divisor = rhoBrent(number);
+        int divisor = rhoBrent(num);
         factors.add(divisor);
-        factors.add(number / divisor);
+        factors.add(num / divisor);
         return factors;
     }
 

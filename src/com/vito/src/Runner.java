@@ -12,7 +12,7 @@ public class Runner {
         }
         var primeNumbers = PollardRho.primeFactors(number);
         if (primeNumbers.size() == 1) {
-            return number + " 1\n";
+            return number + " 1";
         } else {
             var iterationCount = 1;
             var factorPrimeNumbers = primeNumbers;
@@ -22,20 +22,20 @@ public class Runner {
                 iterationCount++;
             } while (factorPrimeNumbers.size() > 1);
 
-            return factorPrimeNumbers.get(0) + " " + iterationCount + "\n";
+            return factorPrimeNumbers.get(0) + " " + iterationCount;
         }
     }
 
     public static String processNumbers(IntStream numbers) {
         StringBuilder result = new StringBuilder();
         try {
-            numbers.forEach(num -> result.append(processPrimeFactors(num)));
+            numbers.forEach(num -> result.append(processPrimeFactors(num)).append("\n"));
         } catch (Exception ex) {
-            System.out.println("Error handle, err: " + ex.getClass() + ", msg: "  + ex.getMessage());
+            System.out.println("Error handle, err: " + ex.getClass() + ", msg: " + ex.getMessage());
             return "";
         }
 
-        return result.toString();
+        return result.toString().stripTrailing();
     }
 
     public static void main(String[] args) {

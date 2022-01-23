@@ -17,37 +17,21 @@ class RunnerTest {
 
     @Test
     void processPrimeFactorsEqualsExContentTest() {
-        var input = """
-            2
-            3
-            5
-            76
-            100
-            2001
-            4""".split("\n");
-
-        var expected = """
-            2 1
-            3 1
-            5 1
-            23 2
-            5 5
-            5 6
-            """;
-
-        assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
+        var input = "2\r\n3\r\n5\r\n76\r\n100\r\n2001\r\n4".lines();
+        var expected = "2 1\n3 1\n5 1\n23 2\n5 5\n5 6";
+        assertEquals(expected, Runner.processNumbers(input.mapToInt(Integer::parseInt)));
     }
 
     @Test
     void processPrimeFactorsEqualsEmptyContentTest() {
-        var input = "".split("\n");
+        var input = new String[]{""};
         var expected = "";
         assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
     }
 
     @Test
     void processPrimeFactorsEqualsSpecialSignContentTest() {
-        var input = "4".split("\n");
+        var input = new String[]{"4"};
         var expected = "";
         assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
     }
