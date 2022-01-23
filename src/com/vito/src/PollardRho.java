@@ -1,4 +1,4 @@
-package com.vito;
+package com.vito.src;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import static java.lang.Integer.numberOfTrailingZeros;
 import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
-class PollardRho {
+public class PollardRho {
 
     public static List<Integer> primeFactors(int number) {
         final List<Integer> factors = new ArrayList<>();
