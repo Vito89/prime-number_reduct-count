@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RunnerTest {
 
     @Test
-    void processPrimeFactorsEqualsContentTest() {
+    void processPrimeFactorsEqualsExContentTest() {
         var input = """
             2
             3
@@ -35,6 +35,20 @@ class RunnerTest {
             5 6
             """;
 
+        assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
+    }
+
+    @Test
+    void processPrimeFactorsEqualsEmptyContentTest() {
+        var input = "".split("\n");
+        var expected = "";
+        assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
+    }
+
+    @Test
+    void processPrimeFactorsEqualsSpecialSignContentTest() {
+        var input = "4".split("\n");
+        var expected = "";
         assertEquals(expected, Runner.processNumbers(stream(input).mapToInt(Integer::parseInt)));
     }
 

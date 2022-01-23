@@ -1,13 +1,10 @@
 package com.vito.src;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.stream;
 
 public class Runner {
-
-    private static final AtomicInteger ai = new AtomicInteger(0); // TODO rm
 
     public static String processPrimeFactors(int number) {
         if (4 == number) {
@@ -31,7 +28,12 @@ public class Runner {
 
     public static String processNumbers(IntStream numbers) {
         StringBuilder result = new StringBuilder();
-        numbers.forEach(num -> result.append(processPrimeFactors(num)));
+        try {
+            numbers.forEach(num -> result.append(processPrimeFactors(num)));
+        } catch (Exception ex) {
+            System.out.println("Error handle, err: " + ex.getClass() + ", msg: "  + ex.getMessage());
+            return "";
+        }
 
         return result.toString();
     }
