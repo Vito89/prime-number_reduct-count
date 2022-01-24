@@ -1,4 +1,4 @@
-package com.vito;
+package com.vito.src;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,23 +7,23 @@ import static java.lang.Integer.numberOfTrailingZeros;
 import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
-class PollardRho {
+public class PollardRho {
 
     public static List<Integer> primeFactors(int number) {
         final List<Integer> factors = new ArrayList<>();
-        number = SmallPrimes.divideToFactorsAndReturnUpdNumb(number, factors);
-        if (1 == number) {
+        var num = SmallPrimes.divideToFactorsAndReturnUpdNumb(number, factors);
+        if (1 == num) {
             return factors;
         }
 
-        if (SmallPrimes.passesMillerRabin(number)) {
-            factors.add(number);
+        if (SmallPrimes.passesMillerRabin(num)) {
+            factors.add(num);
             return factors;
         }
 
-        int divisor = rhoBrent(number);
+        int divisor = rhoBrent(num);
         factors.add(divisor);
-        factors.add(number / divisor);
+        factors.add(num / divisor);
         return factors;
     }
 
