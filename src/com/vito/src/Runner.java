@@ -24,18 +24,19 @@ public class Runner {
         }
     }
 
-    public static void processNumber(int number) {
+    public static String processNumber(int number) {
         try {
-            System.out.println(processPrimeFactors(number));
+            return processPrimeFactors(number);
         } catch (Exception ex) {
             System.out.println("Error handle, err: " + ex.getClass() + ", msg: " + ex.getMessage());
+            return "";
         }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (sc.hasNextLong()) {
-            processNumber(sc.nextInt());
+        while (sc.hasNextInt()) {
+            System.out.println(processNumber(sc.nextInt()));
         }
     }
 }

@@ -29,7 +29,7 @@ public class PollardRho {
 
     static int rhoBrent(final int n) {
         final int xInit = 2;
-        final int m = 25;
+        final int minBound = 25;
         int cst = SmallPrimes.LAST_PRIME;
         int y = xInit;
         int roundCounts = 1;
@@ -42,7 +42,7 @@ public class PollardRho {
 
             int k = 0;
             do {
-                final int bound = min(m, roundCounts - k);
+                final int bound = min(minBound, roundCounts - k);
                 int q = 1;
                 for (int idx = -3; idx < bound; idx++) { // enter loop at least 3 times
                     final long yPowTwo = ((long) y) * y;
@@ -50,7 +50,7 @@ public class PollardRho {
                     final long divisor = abs(x - y);
                     if (0 == divisor) {
                         cst += SmallPrimes.LAST_PRIME;
-                        k = -m;
+                        k = -minBound;
                         y = xInit;
                         roundCounts = 1;
                         break;
@@ -65,7 +65,7 @@ public class PollardRho {
                 if (1 != result) {
                     return result;
                 }
-                k += m;
+                k += minBound;
             } while (k < roundCounts);
             roundCounts = 2 * roundCounts;
         } while (true);
