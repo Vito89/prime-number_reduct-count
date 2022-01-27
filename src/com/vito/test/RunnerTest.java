@@ -35,18 +35,17 @@ class RunnerTest {
     void processPrimeFactorsEqualsSpecialSignContentTest() {
         var input = 4;
         var expected = "";
-        assertEquals(expected, Runner.processNumber(input));
+        assertEquals(expected, Runner.processNumber(4));
     }
 
     @Test
     void twentyThousandElements_processPrimeFactors_Demo() {
-        var intStream = IntStream.generate(() -> abs(ThreadLocalRandom.current().nextInt()))
-            .filter(p -> p < 1000000000)
-            .limit(20000);
-
         var start = LocalDateTime.now();
         out.println("Starting at: " + start);
-        intStream.forEach(Runner::processPrimeFactors);
+        IntStream.generate(() -> abs(ThreadLocalRandom.current().nextInt()))
+            .filter(p -> p < 1000000000)
+            .limit(20000)
+            .forEach(Runner::processPrimeFactors);
         out.println("Finished in:" + Duration.between(start, LocalDateTime.now()).getNano() + " nano");
     }
 }
