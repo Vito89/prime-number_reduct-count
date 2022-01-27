@@ -1,8 +1,6 @@
 package com.vito.src;
 
-import java.util.stream.IntStream;
-
-import static java.util.Arrays.stream;
+import java.util.Scanner;
 
 public class Runner {
 
@@ -26,19 +24,19 @@ public class Runner {
         }
     }
 
-    public static String processNumbers(IntStream numbers) {
-        StringBuilder result = new StringBuilder();
+    public static String processNumber(int number) {
         try {
-            numbers.forEach(num -> result.append(processPrimeFactors(num)).append("\n"));
+            return processPrimeFactors(number);
         } catch (Exception ex) {
             System.out.println("Error handle, err: " + ex.getClass() + ", msg: " + ex.getMessage());
             return "";
         }
-
-        return result.toString().stripTrailing();
     }
 
     public static void main(String[] args) {
-        System.out.println(processNumbers(stream(args).mapToInt(Integer::parseInt)));
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextInt()) {
+            System.out.println(processNumber(sc.nextInt()));
+        }
     }
 }
